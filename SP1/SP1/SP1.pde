@@ -10,7 +10,8 @@ color yellow = #F9FA1E; // Food
 
 Game game;
 boolean gameOver;
-int prevFrameCount;
+int enemyPrevFrameCount;
+int foodPrevFrameCount;
 int currentFrameCount;
 
 Player player1;
@@ -34,7 +35,8 @@ void setup(){
   size(801, 801);
   game = new Game();
   gameOver = false;
-  prevFrameCount = frameCount;
+  enemyPrevFrameCount = frameCount;
+  foodPrevFrameCount = frameCount;
   
   player1 = new Player(0, 15, 1);
   player2 = new Player(15, 0, 2);
@@ -72,7 +74,8 @@ void draw(){
 
 
 void keyPressed(){
-    game.movePlayers();
+    game.movePlayer1();
+    game.movePlayer2();
 }
 
 

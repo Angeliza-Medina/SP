@@ -58,8 +58,8 @@ class Game{
   }
   
   
-  void movePlayers(){
-    if(key == CODED){
+  void movePlayer1(){
+     if(key == CODED){
       if(keyCode == UP){
         playerArr[0].yPos--;
       }else if(keyCode == RIGHT){
@@ -69,33 +69,49 @@ class Game{
       }else if(keyCode == LEFT){
         playerArr[0].xPos--;
       }
-    }else{
-      if(key == 'w'){
-        playerArr[1].yPos--;
-      }else if(key == 'd'){
-        playerArr[1].xPos++;
-      }else if(key == 'x'){
-        playerArr[1].yPos++;
-      }else if(key == 'a'){
-        playerArr[1].xPos--;
-      }
     }
     constrainPlayers();
   }
   
   
+  void movePlayer2(){
+    if(key == 'w'){
+      playerArr[1].yPos--;
+    }else if(key == 'd'){
+      playerArr[1].xPos++;
+    }else if(key == 'x'){
+      playerArr[1].yPos++;
+    }else if(key == 'a'){
+      playerArr[1].xPos--;
+    }
+    constrainPlayers();
+  }
+  
+
   void huntPlayer(){
-    for(int i = 0; i < enemyArr.length; i++){
-      enemyArr[i].huntPlayerXPos();
-      enemyArr[i]. huntPlayerYPos();
+    currentFrameCount = frameCount;
+    int frameCountDifference = currentFrameCount - enemyPrevFrameCount;
+    
+    if(frameCountDifference == 10){
+       for(int i = 0; i < enemyArr.length; i++){
+        enemyArr[i].huntPlayerXPos();
+        enemyArr[i]. huntPlayerYPos();
+      }
+      enemyPrevFrameCount = currentFrameCount;
     }
   }
   
   
   void fleeFromPlayer(){
-    for(int i = 0; i < foodArr.length; i++){
-      foodArr[i].fleeFromPlayerXPos();
-      foodArr[i].fleeFromPlayerYPos();
+    currentFrameCount = frameCount;
+    int frameCountDifference = currentFrameCount - foodPrevFrameCount;
+    
+    if(frameCountDifference == 10){
+      for(int i = 0; i < foodArr.length; i++){
+        foodArr[i].fleeFromPlayerXPos();
+        foodArr[i].fleeFromPlayerYPos();
+      }
+      foodPrevFrameCount = currentFrameCount;
     }
   }
   
