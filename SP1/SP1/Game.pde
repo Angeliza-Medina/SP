@@ -1,7 +1,7 @@
 
 class Game{
-  int fieldSize = 40;
-  int[][] grid = new int[25][25];
+  int fieldSize = 50;
+  int[][] grid = new int[16][16];
   color[] gameEntityColors = {black, pink, blue, purple, yellow};
   // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food 
   
@@ -43,8 +43,8 @@ class Game{
   
   void updateEntities(){
     for(int i = 0; i < playerArr.length; i++){
-      //grid[playerArr[i].xPos][playerArr[i].yPos] = playerArr[i].entityType;
-      // Above CRASHES THE SYSTEM! Fix
+      grid[playerArr[i].xPos][playerArr[i].yPos] = playerArr[i].entityType;
+      println(grid[playerArr[i].xPos][playerArr[i].yPos]);
       //player.takeDamage()
     } 
   }

@@ -11,15 +11,16 @@ color yellow = #F9FA1E; // Food
 Game game;
 Player player1;
 Player player2;
-Player[] playerArr = {player1, player2};
+Player[] playerArr = new Player[2];
 Enemy enemy;
 
 void setup(){
   size(801, 801);
   
   game = new Game();
-  player1 = new Player(0, 25, 1);
-  player2 = new Player(25, 0, 2);
+  player1 = new Player(0, 15, 1);
+  player2 = new Player(15, 0, 2);
+  playerArr = new Player[]{player1, player2};
 }
 
 void draw(){
