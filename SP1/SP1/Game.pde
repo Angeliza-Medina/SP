@@ -97,40 +97,31 @@ class Game{
   //}
   
   void huntPlayerX(){
-    currentFrameCount = frameCount;
-    int frameCountDifference = currentFrameCount - prevFrameCount;
-  
-    if(frameCountDifference == 3){
-      if (playerArr[0].xPos < enemyArr[0].xPos) {
-        enemyArr[0].xPos--;
+    for(int i = 0; i < enemyArr.length; i++){
+      if (playerArr[0].xPos < enemyArr[i].xPos) {
+        enemyArr[i].xPos--;
         constrainEnemies();
       } 
       
-      if(playerArr[0].xPos > enemyArr[0].xPos) {
-        enemyArr[0].xPos++;
+      if(playerArr[0].xPos > enemyArr[i].xPos) {
+        enemyArr[i].xPos++;
         constrainEnemies();
       }
-      
-      prevFrameCount = currentFrameCount;
     }
   }
   
   void huntPlayerY(){
-    currentFrameCount = frameCount;
-    int frameCountDifference = currentFrameCount - prevFrameCount;
-    
-    if(frameCountDifference == 3){
-        if (playerArr[0].yPos < enemyArr[0].yPos) {
-          enemyArr[0].yPos--;
+    for(int i = 0; i < enemyArr.length; i++){
+      if (playerArr[0].yPos < enemyArr[i].yPos) {
+          enemyArr[i].yPos--;
           constrainEnemies();
         } 
         
-        if (playerArr[0].yPos > enemyArr[0].yPos){
-        enemyArr[0].yPos++;
+      if (playerArr[0].yPos > enemyArr[i].yPos){
+        enemyArr[i].yPos++;
         constrainEnemies();
       }
     }
-    
   }
   
   
