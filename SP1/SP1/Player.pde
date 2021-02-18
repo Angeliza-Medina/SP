@@ -24,7 +24,7 @@ class Player{
           health--;
           println("-1 health");
         }else{
-          gameOver = true;
+          //gameOver = true;
         }
       }
     }

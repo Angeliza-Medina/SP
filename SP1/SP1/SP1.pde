@@ -60,10 +60,8 @@ void draw(){
       game.clearGameBoard();
       game.updateEntities();
       game.drawGameBoard();  
-      game.huntPlayerX();
-      game.huntPlayerY();
-      game.fleeFromPlayerX();
-      game.fleeFromPlayerY();
+      game.huntPlayer();
+      game.fleeFromPlayer();
       player1.takeDamage();
     }else{
       noStroke();
