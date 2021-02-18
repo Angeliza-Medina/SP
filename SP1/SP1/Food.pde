@@ -34,4 +34,31 @@ class Food{
       game.constrainFood();
     }
   }
+  
+  
+  void moveInRandomDirection(){
+    int randomDirection = (int) random(4);
+            
+    switch(randomDirection){
+      case 0: 
+      this.xPos++;
+      game.constrainFood();
+      break;
+      
+      case 1:
+      this.xPos--;
+      game.constrainFood();
+      break;
+      
+      case 2:
+      this.yPos++;
+      game.constrainFood();
+      break;
+      
+      case 3:
+      this.yPos--;
+      game.constrainFood();
+      break;
+    }
+  }
 }

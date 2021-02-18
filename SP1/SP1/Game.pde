@@ -92,15 +92,7 @@ class Game{
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - enemyPrevFrameCount;
       
-    //if(frameCountDifference == 10){
-    //   for(int i = 0; i < enemyArr.length; i++){
-    //    enemyArr[i].huntPlayerXPos();
-    //    enemyArr[i]. huntPlayerYPos();
-    //  }
-    //  enemyPrevFrameCount = currentFrameCount;
-    //}
-    
-    if(frameCountDifference == 10){
+    if(frameCountDifference == 15){
       for(int i = 0; i < enemyArr.length; i++){
         int randomMovement = (int) random(4);
             
@@ -122,8 +114,14 @@ class Game{
     
     if(frameCountDifference == 10){
       for(int i = 0; i < foodArr.length; i++){
-        foodArr[i].fleeFromPlayerXPos();
-        foodArr[i].fleeFromPlayerYPos();
+        int randomMovement = (int) random(4);
+         
+        if(randomMovement == 0){
+          foodArr[i].moveInRandomDirection();
+        }else{
+          foodArr[i].fleeFromPlayerXPos();
+          foodArr[i].fleeFromPlayerYPos();
+        }
       }
       foodPrevFrameCount = currentFrameCount;
     }
@@ -147,8 +145,8 @@ class Game{
   
   void constrainEnemies(){
     for(int i = 0; i < enemyArr.length; i++){
-      foodArr[i].xPos = constrain(foodArr[i].xPos, 0, 15);
-      foodArr[i].yPos = constrain(foodArr[i].yPos, 0, 15);
+      enemyArr[i].xPos = constrain(enemyArr[i].xPos, 0, 15);
+      enemyArr[i].yPos = constrain(enemyArr[i].yPos, 0, 15);
     }
   }
   
