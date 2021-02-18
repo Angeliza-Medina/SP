@@ -28,7 +28,7 @@ void draw(){
     game.updateEntities();
     game.drawGameBoard();  
     
-    checkGameBoard(game.grid); // Delete later
+    //checkGameBoard(game.grid); // Delete later
 }
 
 void checkGameBoard(int[][] arr){ // Delete later

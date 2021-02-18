@@ -19,6 +19,7 @@ class Game{
   
   void drawGameBoard(){
     stroke(white);
+    
     for (int x = 0; x < grid.length; x++){
       for (int y = 0; y < grid[0].length; y++){
         fill(getColorFromType(grid[x][y]));
@@ -34,8 +35,6 @@ class Game{
     for(int i = 0; i < gameEntityColors.length; i++){
       if(type == i){
         fillColor = gameEntityColors[i];
-      }else{
-        fillColor = gameEntityColors[0];
       }
     }
     return fillColor;
