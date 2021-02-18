@@ -66,6 +66,7 @@ void draw(){
     }else{
       game.endGame();
     }
+    
     //checkGameBoard(game.grid); // Delete later
 }
 
