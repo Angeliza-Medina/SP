@@ -5,6 +5,7 @@ class Player{
   int entityType;
   int health;
   int score;
+  boolean alive;
   
   
   Player(int xPos, int yPos, color entityType){
@@ -13,6 +14,7 @@ class Player{
     this.entityType = entityType;
     this.health = 3;
     this.score = 0;
+    this.alive = true;
   }
   
   
@@ -23,6 +25,7 @@ class Player{
         if(health >= 0){
           health--;
         }else{
+          alive = false;
           //gameOver = true; CHANGE WHEN YOU ARE DONE
         }
       }

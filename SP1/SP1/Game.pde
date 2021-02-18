@@ -128,6 +128,32 @@ class Game{
   }
   
   
+  void dealDamage(){
+    for(int i = 0; i < playerArr.length; i++){
+      playerArr[i].takeDamage();
+    }
+  }
+  
+  void dealScore(){
+    for(int i = 0; i < playerArr.length; i++){
+      playerArr[i].increaseScore();
+    }
+  }
+  
+  
+  void checkIfGameOver(){
+    if(!playerArr[0].alive && !playerArr[1].alive){
+      noStroke();
+      fill(black);
+      rect(0, 0, width, height);
+      
+      gameOver = true;
+      println("Game Over");
+    }
+  }
+  
+  
+  
   void endGame(){
     noStroke();
     fill(black);

@@ -64,12 +64,9 @@ void draw(){
       game.drawGameBoard();  
       game.huntPlayer();
       game.fleeFromPlayer();
-      player1.takeDamage();
-      //player2.takeDamage();
-      player1.increaseScore();
-      //player2.increaseScore();
-    }else{
-      game.endGame();
+      game.dealDamage();
+      game.dealScore();
+      game.checkIfGameOver();
     }
     
     //checkGameBoard(game.grid); // Delete later
