@@ -8,21 +8,32 @@ color blue = #43D5FF; // Player2
 color purple = #CD19E5; // Enemy
 color yellow = #F9FA1E; // Food
 
-
 Game game;
+
 Player player1;
 Player player2;
 Player[] playerArr = new Player[2];
-Enemy enemy;
+
+Enemy enemy1;
+Enemy enemy2;
+Enemy enemy3;
+Enemy enemy4;
+Enemy[] enemyArr = new Enemy[4];
 
 
 void setup(){
   size(801, 801);
   
   game = new Game();
+  
   player1 = new Player(0, 15, 1);
   player2 = new Player(15, 0, 2);
   playerArr = new Player[]{player1, player2};
+  
+  enemy1 = new Enemy(7, 7);
+  enemy2 = new Enemy(8, 8);
+  enemy3 = new Enemy(9, 9);
+  enemy4 = new Enemy(10, 10);
 }
 
 
