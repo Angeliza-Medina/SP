@@ -8,11 +8,13 @@ color blue = #43D5FF; // Player2
 color purple = #CD19E5; // Enemy
 color yellow = #F9FA1E; // Food
 
+
 Game game;
 Player player1;
 Player player2;
 Player[] playerArr = new Player[2];
 Enemy enemy;
+
 
 void setup(){
   size(801, 801);
@@ -23,13 +25,19 @@ void setup(){
   playerArr = new Player[]{player1, player2};
 }
 
+
 void draw(){
     game.clearGameBoard();
     game.updateEntities();
     game.drawGameBoard();  
-    
     //checkGameBoard(game.grid); // Delete later
 }
+
+
+void keyPressed(){
+    game.movePlayers();
+}
+
 
 void checkGameBoard(int[][] arr){ // Delete later
   System.out.println("");
