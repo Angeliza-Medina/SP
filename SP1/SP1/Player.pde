@@ -13,4 +13,14 @@ class Player{
     this.health = 3;
     this.score = 0;
   }
+  
+  void takeDamage(){
+    if(health > 0){
+      health--;
+    }
+  }
+  
+  void increaseScore(){
+    score++;
+  }
 }
