@@ -57,6 +57,9 @@ class Game{
     } 
     
     // Updates food
+    for(int i = 0; i < foodArr.length; i++){
+      grid[foodArr[i].xPos][foodArr[i].yPos] = foodArr[i].entityType;
+    } 
   }
   
   
@@ -86,28 +89,48 @@ class Game{
   }
   
   
-  void moveEnemies(){
+  //void moveEnemies(){
+  //  currentFrameCount = frameCount;
+  //  int frameCountDifference = currentFrameCount - prevFrameCount;
+
+  //  prevFrameCount = currentFrameCount;
+  //}
+  
+  void huntPlayerX(){
+    currentFrameCount = frameCount;
+    int frameCountDifference = currentFrameCount - prevFrameCount;
+  
+    if(frameCountDifference == 3){
+      if (playerArr[0].xPos < enemyArr[0].xPos) {
+        enemyArr[0].xPos--;
+        constrainEnemies();
+      } 
+      
+      if(playerArr[0].xPos > enemyArr[0].xPos) {
+        enemyArr[0].xPos++;
+        constrainEnemies();
+      }
+      
+      prevFrameCount = currentFrameCount;
+    }
+  }
+  
+  void huntPlayerY(){
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - prevFrameCount;
     
-      for(int i = 0; i < enemyArr.length; i++){
-         if(enemyArr[i].xPos > playerArr[1].xPos){
-           enemyArr[i].xPos++;
-         }else{
-           enemyArr[i].xPos--;
-         }
-         
-         if(enemyArr[i].yPos > playerArr[1].yPos){
-           enemyArr[i].yPos++;
-         }else{
-           enemyArr[i].yPos--;
-         }
+    if(frameCountDifference == 3){
+        if (playerArr[0].yPos < enemyArr[0].yPos) {
+          enemyArr[0].yPos--;
+          constrainEnemies();
+        } 
+        
+        if (playerArr[0].yPos > enemyArr[0].yPos){
+        enemyArr[0].yPos++;
+        constrainEnemies();
+      }
     }
     
-    println("Working");
-    
-    prevFrameCount = currentFrameCount;
-    constrainEnemies();
   }
   
   

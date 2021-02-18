@@ -13,6 +13,4 @@ class Enemy{
     this.targets = playerArr;
   }
   
-  void moveTowardsTarget(){
-  }
 }
