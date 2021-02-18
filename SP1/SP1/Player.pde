@@ -22,9 +22,8 @@ class Player{
         
         if(health >= 0){
           health--;
-          println("-1 health");
         }else{
-          //gameOver = true;
+          //gameOver = true; CHANGE WHEN YOU ARE DONE
         }
       }
     }
@@ -34,7 +33,7 @@ class Player{
     for(int i = 0; i < foodArr.length; i++){
       if(dist(foodArr[i].xPos, foodArr[i].yPos, xPos, yPos) == 0){
         score++;
-        println("+1 Score");
+        println(score);
       }
     }
   }

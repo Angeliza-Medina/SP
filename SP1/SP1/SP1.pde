@@ -65,6 +65,9 @@ void draw(){
       game.huntPlayer();
       game.fleeFromPlayer();
       player1.takeDamage();
+      //player2.takeDamage();
+      player1.increaseScore();
+      //player2.increaseScore();
     }else{
       game.endGame();
     }
