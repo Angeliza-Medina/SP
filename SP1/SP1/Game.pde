@@ -100,6 +100,13 @@ class Game{
   }
   
   
+  void endGame(){
+    noStroke();
+    fill(black);
+    rect(0, 0, width, height);
+  }
+  
+  
   void constrainPlayers(){ //Might change later to constrain all entities
     for(int i = 0; i < playerArr.length; i++){
       playerArr[i].xPos = constrain(playerArr[i].xPos, 0, 15);

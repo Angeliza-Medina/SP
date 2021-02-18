@@ -64,9 +64,7 @@ void draw(){
       game.fleeFromPlayer();
       player1.takeDamage();
     }else{
-      noStroke();
-      fill(black);
-      rect(0, 0, width, height);
+      game.endGame();
     }
     //checkGameBoard(game.grid); // Delete later
 }
