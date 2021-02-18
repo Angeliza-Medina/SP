@@ -6,9 +6,9 @@ class Game{
   // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food 
   
   
-  Game(){
+  //Game(){
     
-  }
+  //}
   
   
   void clearGameBoard(){
@@ -46,10 +46,14 @@ class Game{
   
   
   void updateEntities(){
+    // Updates players
     for(int i = 0; i < playerArr.length; i++){
       grid[playerArr[i].xPos][playerArr[i].yPos] = playerArr[i].entityType;
-      //player.takeDamage()
     } 
+    
+    // Updates enemies
+    
+    // Updates food
   }
   
   
