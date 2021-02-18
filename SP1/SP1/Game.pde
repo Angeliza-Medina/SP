@@ -91,11 +91,25 @@ class Game{
   void huntPlayer(){
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - enemyPrevFrameCount;
+      
+    //if(frameCountDifference == 10){
+    //   for(int i = 0; i < enemyArr.length; i++){
+    //    enemyArr[i].huntPlayerXPos();
+    //    enemyArr[i]. huntPlayerYPos();
+    //  }
+    //  enemyPrevFrameCount = currentFrameCount;
+    //}
     
     if(frameCountDifference == 10){
-       for(int i = 0; i < enemyArr.length; i++){
-        enemyArr[i].huntPlayerXPos();
-        enemyArr[i]. huntPlayerYPos();
+      for(int i = 0; i < enemyArr.length; i++){
+        int randomMovement = (int) random(4);
+            
+        if(randomMovement == 0){
+          enemyArr[i].moveInRandomDirection();
+        }else{
+          enemyArr[i].huntPlayerXPos();
+          enemyArr[i]. huntPlayerYPos();
+        }
       }
       enemyPrevFrameCount = currentFrameCount;
     }
@@ -122,7 +136,7 @@ class Game{
     rect(0, 0, width, height);
   }
   
-  
+    
   void constrainPlayers(){ //Might change later to constrain all entities
     for(int i = 0; i < playerArr.length; i++){
       playerArr[i].xPos = constrain(playerArr[i].xPos, 0, 15);

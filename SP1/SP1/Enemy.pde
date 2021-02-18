@@ -23,7 +23,7 @@ class Enemy{
       game.constrainEnemies();
     }
   }
-  
+ 
   
   void huntPlayerYPos(){
     if (playerArr[0].yPos < this.yPos) {
@@ -32,6 +32,32 @@ class Enemy{
     }else if(playerArr[0].yPos > this.yPos) {
       this.yPos++;
       game.constrainEnemies();
+    }
+  }
+  
+  void moveInRandomDirection(){
+    int randomDirection = (int) random(4);
+            
+    switch(randomDirection){
+      case 0: 
+      this.xPos++;
+      game.constrainEnemies();
+      break;
+      
+      case 1:
+      this.xPos--;
+      game.constrainEnemies();
+      break;
+      
+      case 2:
+      this.yPos++;
+      game.constrainEnemies();
+      break;
+      
+      case 3:
+      this.yPos--;
+      game.constrainEnemies();
+      break;
     }
   }
 }
