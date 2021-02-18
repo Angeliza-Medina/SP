@@ -89,13 +89,6 @@ class Game{
   }
   
   
-  //void moveEnemies(){
-  //  currentFrameCount = frameCount;
-  //  int frameCountDifference = currentFrameCount - prevFrameCount;
-
-  //  prevFrameCount = currentFrameCount;
-  //}
-  
   void huntPlayerX(){
     for(int i = 0; i < enemyArr.length; i++){
       if (playerArr[0].xPos < enemyArr[i].xPos) {

@@ -56,7 +56,6 @@ void draw(){
     game.clearGameBoard();
     game.updateEntities();
     game.drawGameBoard();  
-    //game.moveEnemies();
     game.huntPlayerX();
     game.huntPlayerY();
     
