@@ -6,11 +6,6 @@ class Game{
   // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food 
   
   
-  //Game(){
-    
-  //}
-  
-  
   void clearGameBoard(){
     for (int x = 0; x < grid.length; x++){
       for (int y = 0; y < grid[0].length; y++){

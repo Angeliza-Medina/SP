@@ -9,6 +9,7 @@ color purple = #CD19E5; // Enemy
 color yellow = #F9FA1E; // Food
 
 Game game;
+boolean gameOver;
 int prevFrameCount;
 int currentFrameCount;
 
@@ -32,6 +33,7 @@ Food[] foodArr = new Food[4];
 void setup(){
   size(801, 801);
   game = new Game();
+  gameOver = false;
   prevFrameCount = frameCount;
   
   player1 = new Player(0, 15, 1);
@@ -53,13 +55,21 @@ void setup(){
 
 
 void draw(){
-    game.clearGameBoard();
-    game.updateEntities();
-    game.drawGameBoard();  
-    game.huntPlayerX();
-    game.huntPlayerY();
-    game.fleeFromPlayerX();
-    game.fleeFromPlayerY();
+  
+    if(!gameOver){
+      game.clearGameBoard();
+      game.updateEntities();
+      game.drawGameBoard();  
+      game.huntPlayerX();
+      game.huntPlayerY();
+      game.fleeFromPlayerX();
+      game.fleeFromPlayerY();
+      player1.takeDamage();
+    }else{
+      noStroke();
+      fill(black);
+      rect(0, 0, width, height);
+    }
     //checkGameBoard(game.grid); // Delete later
 }
 

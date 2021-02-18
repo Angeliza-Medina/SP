@@ -17,13 +17,25 @@ class Player{
   
   
   void takeDamage(){
-    if(health > 0){
-      health--;
+    for(int i = 0; i < enemyArr.length; i++){
+      if(dist(enemyArr[i].xPos, enemyArr[i].yPos, xPos, yPos) == 0){
+        
+        if(health >= 0){
+          health--;
+          println("-1 health");
+        }else{
+          gameOver = true;
+        }
+      }
     }
   }
   
-  
   void increaseScore(){
-    score++;
+    for(int i = 0; i < foodArr.length; i++){
+      if(dist(foodArr[i].xPos, foodArr[i].yPos, xPos, yPos) == 0){
+        score++;
+        println("+1 Score");
+      }
+    }
   }
 }
