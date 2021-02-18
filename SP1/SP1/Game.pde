@@ -2,6 +2,8 @@
 class Game{
   int fieldSize = 40;
   int[][] grid = new int[25][25];
+  color[] gameEntityColors = {black, pink, blue, purple, yellow};
+  // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food 
   
   Game(){
     
@@ -27,8 +29,6 @@ class Game{
   }
   
   color getColorFromType(int type){
-    color[] gameEntityColors = {black, pink, blue, purple, yellow};
-
     color fillColor = black;
     
     for(int i = 0; i < gameEntityColors.length; i++){
@@ -39,6 +39,14 @@ class Game{
       }
     }
     return fillColor;
+  }
+  
+  void updateEntities(){
+    for(int i = 0; i < playerArr.length; i++){
+      //grid[playerArr[i].xPos][playerArr[i].yPos] = playerArr[i].entityType;
+      // Above CRASHES THE SYSTEM! Fix
+      //player.takeDamage()
+    } 
   }
 
 }
