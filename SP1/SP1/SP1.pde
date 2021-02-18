@@ -27,4 +27,19 @@ void draw(){
     game.clearGameBoard();
     game.updateEntities();
     game.drawGameBoard();  
+    
+    checkGameBoard(game.grid); // Delete later
+}
+
+void checkGameBoard(int[][] arr){ // Delete later
+  System.out.println("");
+  System.out.println("");
+  System.out.println("");
+  
+  for (int x = 0; x < arr.length; x++){
+    for (int y = 0; y < arr[0].length; y++){
+      System.out.print(arr[x][y] + ", ");  
+    }
+    println();
+  }
 }
