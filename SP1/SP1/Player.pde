@@ -6,6 +6,7 @@ class Player{
   int health;
   int score;
   
+  
   Player(int xPos, int yPos, color entityType){
     this.xPos = xPos;
     this.yPos = yPos;
@@ -14,11 +15,13 @@ class Player{
     this.score = 0;
   }
   
+  
   void takeDamage(){
     if(health > 0){
       health--;
     }
   }
+  
   
   void increaseScore(){
     score++;

@@ -9,6 +9,8 @@ color purple = #CD19E5; // Enemy
 color yellow = #F9FA1E; // Food
 
 Game game;
+int prevFrameCount;
+int currentFrameCount;
 
 Player player1;
 Player player2;
@@ -25,15 +27,17 @@ void setup(){
   size(801, 801);
   
   game = new Game();
+  prevFrameCount = frameCount;
   
   player1 = new Player(0, 15, 1);
   player2 = new Player(15, 0, 2);
   playerArr = new Player[]{player1, player2};
   
-  enemy1 = new Enemy(7, 7);
-  enemy2 = new Enemy(8, 8);
-  enemy3 = new Enemy(9, 9);
-  enemy4 = new Enemy(10, 10);
+  enemy1 = new Enemy(0, 0);
+  enemy2 = new Enemy(2, 0);
+  enemy3 = new Enemy(13, 15);
+  enemy4 = new Enemy(15, 15);
+  enemyArr = new Enemy[]{enemy1, enemy2, enemy3, enemy4};
 }
 
 
@@ -41,7 +45,8 @@ void draw(){
     game.clearGameBoard();
     game.updateEntities();
     game.drawGameBoard();  
-    //checkGameBoard(game.grid); // Delete later
+    game.moveEnemies();
+    checkGameBoard(game.grid); // Delete later
 }
 
 

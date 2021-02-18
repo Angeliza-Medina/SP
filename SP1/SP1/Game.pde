@@ -52,6 +52,9 @@ class Game{
     } 
     
     // Updates enemies
+    for(int i = 0; i < enemyArr.length; i++){
+      grid[enemyArr[i].xPos][enemyArr[i].yPos] = enemyArr[i].entityType;
+    } 
     
     // Updates food
   }
@@ -79,8 +82,32 @@ class Game{
         playerArr[1].xPos--;
       }
     }
-    
     constrainPlayers();
+  }
+  
+  
+  void moveEnemies(){
+    currentFrameCount = frameCount;
+    int frameCountDifference = currentFrameCount - prevFrameCount;
+    
+      for(int i = 0; i < enemyArr.length; i++){
+         if(enemyArr[i].xPos > playerArr[1].xPos){
+           enemyArr[i].xPos++;
+         }else{
+           enemyArr[i].xPos--;
+         }
+         
+         if(enemyArr[i].yPos > playerArr[1].yPos){
+           enemyArr[i].yPos++;
+         }else{
+           enemyArr[i].yPos--;
+         }
+    }
+    
+    println("Working");
+    
+    prevFrameCount = currentFrameCount;
+    constrainEnemies();
   }
   
   
@@ -88,6 +115,14 @@ class Game{
     for(int i = 0; i < playerArr.length; i++){
       playerArr[i].xPos = constrain(playerArr[i].xPos, 0, 15);
       playerArr[i].yPos = constrain(playerArr[i].yPos, 0, 15);
+    }
+  }
+  
+  
+  void constrainEnemies(){
+    for(int i = 0; i < enemyArr.length; i++){
+      enemyArr[i].xPos = constrain(enemyArr[i].xPos, 0, 15);
+      enemyArr[i].yPos = constrain(enemyArr[i].yPos, 0, 15);
     }
   }
 }
