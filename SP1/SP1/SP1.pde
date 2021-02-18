@@ -58,7 +58,8 @@ void draw(){
     game.drawGameBoard();  
     game.huntPlayerX();
     game.huntPlayerY();
-    
+    game.fleeFromPlayerX();
+    game.fleeFromPlayerY();
     //checkGameBoard(game.grid); // Delete later
 }
 

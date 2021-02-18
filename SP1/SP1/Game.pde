@@ -118,6 +118,35 @@ class Game{
   }
   
   
+  void fleeFromPlayerX(){
+    for(int i = 0; i < foodArr.length; i++){
+      if (playerArr[0].xPos < foodArr[i].xPos) {
+        foodArr[i].xPos++;
+        constrainFood();
+      } 
+      
+      if(playerArr[0].xPos > foodArr[i].xPos) {
+        foodArr[i].xPos--;
+        constrainFood();
+      }
+    }
+  }
+  
+  void fleeFromPlayerY(){
+    for(int i = 0; i < foodArr.length; i++){
+      if (playerArr[0].yPos < foodArr[i].yPos) {
+          foodArr[i].yPos++;
+          constrainFood();
+        } 
+        
+      if (playerArr[0].yPos > foodArr[i].yPos){
+        foodArr[i].yPos--;
+        constrainFood();
+      }
+    }
+  }
+  
+  
   void constrainPlayers(){ //Might change later to constrain all entities
     for(int i = 0; i < playerArr.length; i++){
       playerArr[i].xPos = constrain(playerArr[i].xPos, 0, 15);
@@ -128,8 +157,16 @@ class Game{
   
   void constrainEnemies(){
     for(int i = 0; i < enemyArr.length; i++){
-      enemyArr[i].xPos = constrain(enemyArr[i].xPos, 0, 15);
-      enemyArr[i].yPos = constrain(enemyArr[i].yPos, 0, 15);
+      foodArr[i].xPos = constrain(foodArr[i].xPos, 0, 15);
+      foodArr[i].yPos = constrain(foodArr[i].yPos, 0, 15);
+    }
+  }
+  
+  
+  void constrainFood(){
+    for(int i = 0; i < foodArr.length; i++){
+      foodArr[i].xPos = constrain(foodArr[i].xPos, 0, 15);
+      foodArr[i].yPos = constrain(foodArr[i].yPos, 0, 15);
     }
   }
 }

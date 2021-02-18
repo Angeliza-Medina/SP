@@ -13,6 +13,4 @@ class Food{
     this.targets = playerArr;
   }
   
-  void moveAwayFromTarget(){
-  }
 }
