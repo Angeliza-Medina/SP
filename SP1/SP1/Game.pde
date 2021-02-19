@@ -147,16 +147,11 @@ class Game{
   
   void checkIfGameOver(){
     if(!playerArr[0].alive && !playerArr[1].alive){
-      noStroke();
-      fill(black);
-      rect(0, 0, width, height);
-      
+      this.endGame();
       gameOver = true;
       println("Game Over");
     }
   }
-  
-  
   
   void endGame(){
     noStroke();
