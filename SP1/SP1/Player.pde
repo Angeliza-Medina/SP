@@ -26,6 +26,10 @@ class Player{
           health--;
         }else{
           alive = false;
+          
+          if(!alive){
+            this.entityType = 5;
+          }
           //gameOver = true; CHANGE WHEN YOU ARE DONE
         }
       }

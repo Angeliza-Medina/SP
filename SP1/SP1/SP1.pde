@@ -7,6 +7,7 @@ color pink = #FF437C; // Player1
 color blue = #43D5FF; // Player2
 color purple = #CD19E5; // Enemy
 color yellow = #F9FA1E; // Food
+color grey = #4B4B4B; // Dead Player
 
 Game game;
 boolean gameOver;

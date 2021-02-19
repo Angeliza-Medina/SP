@@ -2,8 +2,8 @@
 class Game{
   int fieldSize = 50;
   int[][] grid = new int[16][16];
-  color[] gameEntityColors = {black, pink, blue, purple, yellow};
-  // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food 
+  color[] gameEntityColors = {black, pink, blue, purple, yellow, grey};
+  // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food, 5 = Dead Player
   
   
   void clearGameBoard(){
@@ -59,32 +59,36 @@ class Game{
   
   
   void movePlayer1(){
-     if(key == CODED){
-      if(keyCode == UP){
-        playerArr[0].yPos--;
-      }else if(keyCode == RIGHT){
-        playerArr[0].xPos++;
-      }else if(keyCode == DOWN){
-        playerArr[0].yPos++;
-      }else if(keyCode == LEFT){
-        playerArr[0].xPos--;
+    if(playerArr[0].alive){
+      if(key == CODED){
+        if(keyCode == UP){
+          playerArr[0].yPos--;
+        }else if(keyCode == RIGHT){
+          playerArr[0].xPos++;
+        }else if(keyCode == DOWN){
+          playerArr[0].yPos++;
+        }else if(keyCode == LEFT){
+          playerArr[0].xPos--;
+        }
       }
+      constrainPlayers();
     }
-    constrainPlayers();
   }
   
   
   void movePlayer2(){
-    if(key == 'w'){
-      playerArr[1].yPos--;
-    }else if(key == 'd'){
-      playerArr[1].xPos++;
-    }else if(key == 'x'){
-      playerArr[1].yPos++;
-    }else if(key == 'a'){
-      playerArr[1].xPos--;
+    if(playerArr[1].alive){
+      if(key == 'w'){
+        playerArr[1].yPos--;
+      }else if(key == 'd'){
+        playerArr[1].xPos++;
+      }else if(key == 'x'){
+        playerArr[1].yPos++;
+      }else if(key == 'a'){
+        playerArr[1].xPos--;
+      }
+      constrainPlayers();
     }
-    constrainPlayers();
   }
   
 
@@ -112,7 +116,7 @@ class Game{
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - foodPrevFrameCount;
     
-    if(frameCountDifference == 10){
+    if(frameCountDifference == 20){
       for(int i = 0; i < foodArr.length; i++){
         int randomMovement = (int) random(4);
          
