@@ -36,7 +36,7 @@ class Player{
     for(int i = 0; i < foodArr.length; i++){
       if(dist(foodArr[i].xPos, foodArr[i].yPos, xPos, yPos) == 0){
         score++;
-        println(score);
+        foodArr[i].respawnOnRandomLocation();
       }
     }
   }

@@ -61,4 +61,13 @@ class Food{
       break;
     }
   }
+  
+  void respawnOnRandomLocation(){
+    for(int i = 0; i < playerArr.length; i++){
+      if(dist(playerArr[i].xPos, playerArr[i].yPos, this.xPos, this.yPos) == 0){
+        this.xPos = (int) random(16);
+        this.yPos = (int) random(16);
+      }
+    }
+  }
 }
