@@ -96,7 +96,7 @@ class Game{
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - enemyPrevFrameCount;
       
-    if(frameCountDifference == 15){
+    if(frameCountDifference == 20){
       for(int i = 0; i < enemyArr.length; i++){
         int randomMovement = (int) random(4);
             
@@ -169,7 +169,11 @@ class Game{
     if(!playerArr[0].alive && !playerArr[1].alive){
       this.endGame();
       gameOver = true;
-      println("Game Over");
+      
+      println("****** GAME OVER ******");
+      println();
+      println("Player1 Score: " + playerArr[0].score);
+      println("Player2 Score: " + playerArr[1].score);
     }
   }
   
