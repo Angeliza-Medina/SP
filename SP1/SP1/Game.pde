@@ -203,20 +203,26 @@ class Game{
   
   void checkIfGameOver(){
     if(!playerArr[0].alive && !playerArr[1].alive){
-      this.endGame();
+      this.displayGameOverScreen();
       gameOver = true;
-      
-      println("****** GAME OVER ******");
-      println();
-      println("Player1 Score: " + playerArr[0].score);
-      println("Player2 Score: " + playerArr[1].score);
     }
   }
   
-  void endGame(){
+  void displayGameOverScreen(){
     noStroke();
     fill(black);
     rect(0, 0, width, height);
+    
+    textSize(70);
+    textAlign(CENTER);
+    fill(255);
+    text("GAME OVER", width/2, 200);
+    
+    textSize(30);
+    fill(pink);
+    text("Player1 score: " + playerArr[0].score, width/2, height/2 - 50);
+    fill(blue);
+    text("Player2 score: " + playerArr[1].score, width/2, height/2); 
   }
   
   
