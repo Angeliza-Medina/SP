@@ -64,7 +64,8 @@ void draw(){
   if(!gameOver){
     game.clearGameBoard();
     game.updateEntities();
-    game.drawGameBoard();  
+    game.drawGameBoard();
+    game.displayScores();
     game.huntPlayer();
     game.fleeFromPlayer();
     game.dealDamage();

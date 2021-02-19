@@ -47,6 +47,14 @@ class Game{
   }
   
   
+  void displayScores(){
+    textSize(30);
+    fill(255);
+    text("Player1 score: " + playerArr[0].score, 50, 50); 
+    text("Player2 score: " + playerArr[1].score, 520, 50); 
+  }
+  
+  
   void updateEntities(){
     // Updates both players location
     for(int i = 0; i < playerArr.length; i++){
