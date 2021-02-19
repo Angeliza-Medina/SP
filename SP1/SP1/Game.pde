@@ -3,7 +3,14 @@ class Game{
   int fieldSize = 50;
   int[][] grid = new int[16][16];
   color[] gameEntityColors = {black, pink, blue, purple, yellow, grey};
-  // 0 = Empty field, 1 = Player1, 2 = Player2, 3 = Enemy, 4 = Food, 5 = Dead Player
+  /*
+    0 = black, Empty field 
+    1 = pink, Player1 
+    2 = blue, Player2 
+    3 = purple, Enemy 
+    4 = yellow, Food 
+    5 = grey, Dead Player
+  */
   
   
   void clearGameBoard(){
@@ -184,7 +191,7 @@ class Game{
   }
   
     
-  void constrainPlayers(){ //Might change later to constrain all entities
+  void constrainPlayers(){
     for(int i = 0; i < playerArr.length; i++){
       playerArr[i].xPos = constrain(playerArr[i].xPos, 0, 15);
       playerArr[i].yPos = constrain(playerArr[i].yPos, 0, 15);

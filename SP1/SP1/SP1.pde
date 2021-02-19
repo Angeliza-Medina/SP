@@ -58,37 +58,20 @@ void setup(){
 
 
 void draw(){
-  
-    if(!gameOver){
-      game.clearGameBoard();
-      game.updateEntities();
-      game.drawGameBoard();  
-      game.huntPlayer();
-      game.fleeFromPlayer();
-      game.dealDamage();
-      game.dealScore();
-      game.checkIfGameOver();
-    }
-    
-    //checkGameBoard(game.grid); // Delete later
+  if(!gameOver){
+    game.clearGameBoard();
+    game.updateEntities();
+    game.drawGameBoard();  
+    game.huntPlayer();
+    game.fleeFromPlayer();
+    game.dealDamage();
+    game.dealScore();
+    game.checkIfGameOver();
+  }
 }
 
 
 void keyPressed(){
-    game.movePlayer1();
-    game.movePlayer2();
-}
-
-
-void checkGameBoard(int[][] arr){ // Delete later
-  System.out.println("");
-  System.out.println("");
-  System.out.println("");
-  
-  for (int x = 0; x < arr.length; x++){
-    for (int y = 0; y < arr[0].length; y++){
-      System.out.print(arr[y][x] + ", ");  
-    }
-    println();
-  }
+  game.movePlayer1();
+  game.movePlayer2();
 }
