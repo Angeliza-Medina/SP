@@ -103,8 +103,19 @@ class Game{
         if(randomMovement == 0){
           enemyArr[i].moveInRandomDirection();
         }else{
-          enemyArr[i].huntPlayerXPos();
-          enemyArr[i]. huntPlayerYPos();
+          float player1Distance = dist(playerArr[0].xPos, playerArr[0].yPos, enemyArr[i].xPos, enemyArr[i].yPos);
+          float player2Distance = dist(playerArr[1].xPos, playerArr[1].yPos, enemyArr[i].xPos, enemyArr[i].yPos);
+          
+          Player currentTarget;
+          
+          if(player1Distance < player2Distance){
+            currentTarget = playerArr[0];
+          }else{
+            currentTarget = playerArr[1];
+          }
+          
+          enemyArr[i].huntPlayerXPos(currentTarget);
+          enemyArr[i]. huntPlayerYPos(currentTarget);
         }
       }
       enemyPrevFrameCount = currentFrameCount;
@@ -137,6 +148,7 @@ class Game{
       playerArr[i].takeDamage();
     }
   }
+  
   
   void dealScore(){
     for(int i = 0; i < playerArr.length; i++){

@@ -14,22 +14,22 @@ class Enemy{
   }
   
   
-  void huntPlayerXPos(){
-    if (playerArr[0].xPos < this.xPos) {
+  void huntPlayerXPos(Player currentTarget){
+    if (currentTarget.xPos < this.xPos) {
       this.xPos--;
       game.constrainEnemies();
-    }else if(playerArr[0].xPos > this.xPos) {
+    }else if(currentTarget.xPos > this.xPos) {
       this.xPos++;
       game.constrainEnemies();
     }
   }
  
   
-  void huntPlayerYPos(){
-    if (playerArr[0].yPos < this.yPos) {
+  void huntPlayerYPos(Player currentTarget){
+    if (currentTarget.yPos < this.yPos) {
       this.yPos--;
       game.constrainEnemies();
-    }else if(playerArr[0].yPos > this.yPos) {
+    }else if(currentTarget.yPos > this.yPos) {
       this.yPos++;
       game.constrainEnemies();
     }
