@@ -14,7 +14,8 @@ The objective of this game is to get a higher score than your opponent.<br>
 
 <br>
 
-To score points, the players will have to catch "food", which are running away from the closest player to them. When food has been caught, the player will be given 1 point, which will be added to the player's score. The food that was caught will then respawn on a new random location.
+To score points, the players will have to catch "food", which are running away from the closest player to them. When food has been caught, the player will be given 1 point, which will be added to the player's score. The food that was caught will then respawn on a new random location.<br>
+Player scores are shown in the top left corner for player1 and top right corner for player2.
 
 The food is represented by yellow squares.
 
@@ -34,7 +35,7 @@ A dead player is represented by a grey square.
 
 <br>
 
-When both players's are dead, the game will end and the game window will be filled totally black. A "Game Over" message will be displayed in the console along will player1 and player2's score results.
+When both players's are dead, the game will end and the "Game Over" screen will be displayed. The game over screen will show both player scores and announce the winner.
 
 <br>
 
