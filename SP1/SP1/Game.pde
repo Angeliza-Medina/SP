@@ -149,8 +149,27 @@ class Game{
         if(randomMovement == 0){
           foodArr[i].moveInRandomDirection();
         }else{
-          foodArr[i].fleeFromPlayerXPos();
-          foodArr[i].fleeFromPlayerYPos();
+          float player1Distance = dist(playerArr[0].xPos, playerArr[0].yPos, foodArr[i].xPos, foodArr[i].yPos);
+          float player2Distance = dist(playerArr[1].xPos, playerArr[1].yPos, foodArr[i].xPos, foodArr[i].yPos);
+          
+          Player closestPlayer = playerArr[0];
+          
+          if(player1Distance < player2Distance){
+            if(playerArr[0].alive){
+              closestPlayer = playerArr[0];
+            }else{
+              closestPlayer = playerArr[1];
+            }
+          }else if(player1Distance > player2Distance){
+            if(playerArr[1].alive){
+              closestPlayer = playerArr[1];
+            }else{
+               closestPlayer = playerArr[0];
+            }
+          }
+   
+          foodArr[i].fleeFromPlayerXPos(closestPlayer);
+          foodArr[i].fleeFromPlayerYPos(closestPlayer);
         }
       }
       foodPrevFrameCount = currentFrameCount;

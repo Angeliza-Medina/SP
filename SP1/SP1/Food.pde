@@ -14,22 +14,22 @@ class Food{
   }
   
   
-  void fleeFromPlayerXPos(){
-    if (playerArr[0].xPos < this.xPos) {
+  void fleeFromPlayerXPos(Player closestPlayer){
+    if (closestPlayer.xPos < this.xPos) {
       this.xPos++;
       game.constrainFood();
-    }else if(playerArr[0].xPos > this.xPos) {
+    }else if(closestPlayer.xPos > this.xPos) {
       this.xPos--;
       game.constrainFood();
     }
   }
   
   
-  void fleeFromPlayerYPos(){
-    if (playerArr[0].yPos < this.yPos) {
+  void fleeFromPlayerYPos(Player closestPlayer){
+    if (closestPlayer.yPos < this.yPos) {
       this.yPos++;
       game.constrainFood();
-    }else if(playerArr[0].yPos > this.yPos) {
+    }else if(closestPlayer.yPos > this.yPos) {
       this.yPos--;
       game.constrainFood();
     }
