@@ -1,5 +1,6 @@
 
 class Food{
+  
   int xPos;
   int yPos;
   int entityType;

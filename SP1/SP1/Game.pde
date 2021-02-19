@@ -12,7 +12,7 @@ class Game{
     5 = grey, Dead Player
   */
   
-  
+  // Removes any afterimage left by the game's different entities
   void clearGameBoard(){
     for (int x = 0; x < grid.length; x++){
       for (int y = 0; y < grid[0].length; y++){
@@ -48,17 +48,17 @@ class Game{
   
   
   void updateEntities(){
-    // Updates players
+    // Updates both players location
     for(int i = 0; i < playerArr.length; i++){
       grid[playerArr[i].xPos][playerArr[i].yPos] = playerArr[i].entityType;
     } 
     
-    // Updates enemies
+    // Updates all enemy locations
     for(int i = 0; i < enemyArr.length; i++){
       grid[enemyArr[i].xPos][enemyArr[i].yPos] = enemyArr[i].entityType;
     } 
     
-    // Updates food
+    // Updates all food locations
     for(int i = 0; i < foodArr.length; i++){
       grid[foodArr[i].xPos][foodArr[i].yPos] = foodArr[i].entityType;
     } 
@@ -103,7 +103,7 @@ class Game{
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - enemyPrevFrameCount;
       
-    if(frameCountDifference == 20){
+    if(frameCountDifference == 20){ // Control enemy speed. Lower = slower || Higher = faster
       for(int i = 0; i < enemyArr.length; i++){
         int randomMovement = (int) random(4);
             
@@ -115,6 +115,7 @@ class Game{
           
           Player currentTarget = playerArr[0];
           
+          // Will chase the closest player that is alive
           if(player1Distance < player2Distance){
             if(playerArr[0].alive){
               currentTarget = playerArr[0];
@@ -142,7 +143,7 @@ class Game{
     currentFrameCount = frameCount;
     int frameCountDifference = currentFrameCount - foodPrevFrameCount;
     
-    if(frameCountDifference == 20){
+    if(frameCountDifference == 20){ // Control food speed. Lower = slower || Higher = faster
       for(int i = 0; i < foodArr.length; i++){
         int randomMovement = (int) random(4);
          
@@ -154,6 +155,7 @@ class Game{
           
           Player closestPlayer = playerArr[0];
           
+          // Will flee from the closest player that is alive
           if(player1Distance < player2Distance){
             if(playerArr[0].alive){
               closestPlayer = playerArr[0];
@@ -209,6 +211,11 @@ class Game{
     rect(0, 0, width, height);
   }
   
+  
+  /*
+    Following methods makes sure that no entity can move out of the game board.
+    Program will crash without!
+  */
     
   void constrainPlayers(){
     for(int i = 0; i < playerArr.length; i++){

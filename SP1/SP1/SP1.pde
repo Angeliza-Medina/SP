@@ -3,17 +3,18 @@
 
 color black = #000000;
 color white = #FFFFFF;
-color pink = #FF437C; // Player1
-color blue = #43D5FF; // Player2
-color purple = #CD19E5; // Enemy
-color yellow = #F9FA1E; // Food
-color grey = #4B4B4B; // Dead Player
+color pink = #FF437C;
+color blue = #43D5FF;
+color purple = #CD19E5;
+color yellow = #F9FA1E;
+color grey = #4B4B4B;
 
-Game game;
 boolean gameOver;
 int enemyPrevFrameCount;
 int foodPrevFrameCount;
 int currentFrameCount;
+
+Game game;
 
 Player player1;
 Player player2;
@@ -34,8 +35,10 @@ Food[] foodArr = new Food[4];
 
 void setup(){
   size(801, 801);
+  
   game = new Game();
   gameOver = false;
+  
   enemyPrevFrameCount = frameCount;
   foodPrevFrameCount = frameCount;
   

@@ -1,5 +1,6 @@
 
 class Enemy{
+  
   int xPos;
   int yPos;
   int entityType;
@@ -34,6 +35,7 @@ class Enemy{
       game.constrainEnemies();
     }
   }
+  
   
   void moveInRandomDirection(){
     int randomDirection = (int) random(4);
