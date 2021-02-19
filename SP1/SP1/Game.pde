@@ -106,12 +106,20 @@ class Game{
           float player1Distance = dist(playerArr[0].xPos, playerArr[0].yPos, enemyArr[i].xPos, enemyArr[i].yPos);
           float player2Distance = dist(playerArr[1].xPos, playerArr[1].yPos, enemyArr[i].xPos, enemyArr[i].yPos);
           
-          Player currentTarget;
+          Player currentTarget = playerArr[0];
           
           if(player1Distance < player2Distance){
-            currentTarget = playerArr[0];
-          }else{
-            currentTarget = playerArr[1];
+            if(playerArr[0].alive){
+              currentTarget = playerArr[0];
+            }else{
+              currentTarget = playerArr[1];
+            }
+          }else if(player1Distance > player2Distance){
+            if(playerArr[1].alive){
+              currentTarget = playerArr[1];
+            }else{
+               currentTarget = playerArr[0];
+            }
           }
           
           enemyArr[i].huntPlayerXPos(currentTarget);
@@ -121,7 +129,7 @@ class Game{
       enemyPrevFrameCount = currentFrameCount;
     }
   }
-  
+ 
   
   void fleeFromPlayer(){
     currentFrameCount = frameCount;
