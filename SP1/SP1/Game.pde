@@ -209,20 +209,34 @@ class Game{
   }
   
   void displayGameOverScreen(){
+    // Blackout screen
     noStroke();
     fill(black);
     rect(0, 0, width, height);
     
+    // Announce game over
     textSize(70);
     textAlign(CENTER);
     fill(255);
     text("GAME OVER", width/2, 200);
     
+    // Display both player scores
     textSize(30);
     fill(pink);
     text("Player1 score: " + playerArr[0].score, width/2, height/2 - 50);
     fill(blue);
     text("Player2 score: " + playerArr[1].score, width/2, height/2); 
+    
+    // Display final result
+    textSize(50);
+    fill(white);
+    if(playerArr[0].score > playerArr[1].score){
+      text("~ Player1 Wins! ~", width/2, height/2 + 120); 
+    }else if(playerArr[0].score < playerArr[1].score){
+      text("~ Player2 Wins! ~", width/2, height/2 + 120); 
+    }else{
+      text("~ Draw ~", width/2, height/2 + 120); 
+    }
   }
   
   
