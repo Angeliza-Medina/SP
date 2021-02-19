@@ -22,7 +22,7 @@ class Player{
     for(int i = 0; i < enemyArr.length; i++){
       if(dist(enemyArr[i].xPos, enemyArr[i].yPos, xPos, yPos) == 0){
         
-        if(health >= 0){
+        if(health > 0){
           health--;
         }else{
           alive = false;
@@ -30,7 +30,6 @@ class Player{
           if(!alive){
             this.entityType = 5;
           }
-          //gameOver = true; CHANGE WHEN YOU ARE DONE
         }
       }
     }
