@@ -237,6 +237,8 @@ class Game{
     }else{
       text("~ Draw ~", width/2, height/2 + 120); 
     }
+    
+    noLoop();
   }
   
   
