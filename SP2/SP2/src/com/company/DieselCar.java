@@ -34,7 +34,7 @@ public class DieselCar extends Car{
    public double calculateGreenOwnerTax(){
       double greenOwnerTax = 0;
 
-      if(kmPrL >= 20 && kmPrL < 50){
+      if(kmPrL >= 20 && kmPrL < 50 || kmPrL > 50){
          greenOwnerTax = 330 + 130;
       }else if(kmPrL >= 15 && kmPrL < 20){
          greenOwnerTax = 1050 + 1390;

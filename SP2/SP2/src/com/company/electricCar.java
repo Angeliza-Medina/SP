@@ -46,7 +46,7 @@ public class electricCar extends Car{
       double greenOwerTax = 0;
       double kmPrL = 100 / (whPrKm / 91.25);
 
-      if(kmPrL >= 20 && kmPrL < 50){
+      if(kmPrL >= 20 && kmPrL < 50 || kmPrL > 50){
          greenOwerTax = 330;
       }else if(kmPrL >= 15 && kmPrL < 20){
          greenOwerTax = 1050;
