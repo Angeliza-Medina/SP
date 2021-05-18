@@ -1,0 +1,41 @@
+@startuml SP5
+
+class Main{
+    
+}
+
+class Film{
+    
+}
+
+class User{
+    
+}
+
+class Search{
+    
+}
+
+class SignIn{
+    
+}
+
+class GUI{
+
+}
+
+Main "1" *-- "1" SignIn
+Main "1" *-- "1" Search
+Main "1" *-- "many" User
+Main "1" *-- "1" GUI
+Main "1" *-- "many" Film
+User "many" *-- "many" SignIn
+
+@enduml
+
+/'
+Class relationships:
+<|-- Extention
+*-- Composition
+o-- Aggregation
+'/

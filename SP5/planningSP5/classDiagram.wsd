@@ -1,0 +1,63 @@
+@startuml SP5
+
+class Main{
+    ArrayList<Film> films;
+    void startMenu();
+}
+
+class Film{
+    ArrayList<String> actors;
+    ArrayList<String> directors;
+    ArrayList<String> genres;
+}
+
+class User{
+    String email;
+    String password;
+    String name;
+}
+
+class Search{
+    Film findFilmByName();
+    ArrayList<Film> getAllFilmsofGenre();
+}
+
+class SignIn{
+    private JRadioButton listlabel;
+    private JLabel userlabel;
+    private JTextField userText;
+    private JLabel passwordLabel;
+    private JPasswordField passwordText;
+    private JButton button;
+    private JLabel success;
+    private Integer age []= {0,1};
+    void sign();
+    void actionPerformed();
+}
+
+class GUI{
+    void actionPreformed();
+}
+
+class DBConnector{
+    Film readFilm();
+    Film readFilmPersonelle();
+}
+
+
+Main "1" *-- "1" SignIn
+Main "1" *-- "1" DBConnector
+Main "1" *-- "1" Search
+Main "1" *-- "many" User
+Main "1" *-- "1" GUI
+Main "1" *-- "many" Film
+User "many" *-- "many" SignIn
+
+@enduml
+
+/'
+Class relationships:
+<|-- Extention
+*-- Composition
+o-- Aggregation
+'/
