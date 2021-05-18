@@ -64,7 +64,7 @@ public class DBConnector {
       return userMatch;
    }
 
-   private static void getUserLikedList(User user){
+   public static void getUserLikedList(User user){
       Connection conn = null;
       PreparedStatement pstmt = null;
 
@@ -106,8 +106,7 @@ public class DBConnector {
             ArrayList<String> directors = new ArrayList<String>(); //todo Needs a connection table to films to get data
             ArrayList<String> actors = new ArrayList<String>(); //todo Needs a connection table to films to get data
 
-            user.getLikedFilms().add(new Film(id, title, summary, releaseDate, imgPath));
-            //user.getLikedFilms().add(new Film(id, title, releaseDate, imgPath, directors, actors, genres));
+            user.setLikedFilms(new Film(id, title, summary, releaseDate, imgPath));
          }
 
          rs.close();
@@ -237,8 +236,9 @@ public class DBConnector {
             String genre1 = rs.getString("film_genre");
             String genre2 = rs.getString("secondary_film_genre");
 
-
-            match = new Film(id, title, summary, releaseDate, imgPath);
+            if(userInput.equals(title)){
+               match = new Film(id, title, summary, releaseDate, imgPath);
+            }
          }
 
          rs.close();
@@ -585,4 +585,183 @@ public class DBConnector {
       }//end try
    }
 
+   public void addToLikedList(int filmId, int userId){
+      Connection conn = null;
+      ResultSet rs = null;
+
+      String sql = "INSERT INTO liked_list(film_id, film_user_id) " + "VALUES(?, ?)";
+      try{
+         boolean match = likelistMatch(filmId, userId);
+         System.out.println(match);
+         if(!match){
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            System.out.println("Creating statement...");
+            pstmt.setInt(1, filmId);
+            pstmt.setInt(2, userId);
+
+            pstmt.addBatch();
+            pstmt.executeBatch();
+
+            User user = new User(Main.currentUser.getEmail(), Main.currentUser.getPassword(), Main.currentUser.getName());
+            Film film = getAFilmById(String.valueOf(filmId));
+            user.getLikedFilms().add(film);
+
+         }
+      }catch (SQLException e) {
+         System.out.println(e.getCause());
+      } finally {
+         try {
+            if(rs != null)  rs.close();
+         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+         }
+      }
+   }
+
+   public void removeFromLikedList(int filmId, int userId)
+   {
+      Connection conn = null;
+      ResultSet rs = null;
+
+      String sql = "DELETE FROM liked_list WHERE film_user_id = ? AND film_id = ?;";
+      try{
+         //boolean match = likelistMatch(filmId, userId);
+         //System.out.println(match);
+
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+            PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            System.out.println("Creating statement...");
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, filmId);
+
+            pstmt.addBatch();
+            pstmt.executeBatch();
+/*
+            User user = new User(Main.currentUser.getEmail(), Main.currentUser.getPassword(), Main.currentUser.getName());
+            Film film = getAFilmById(String.valueOf(filmId));
+            user.getLikedFilms().add(film);
+*/
+            Main.currentUser.getLikedFilms().clear();
+            getUserLikedList(Main.currentUser);
+
+      }catch (SQLException e) {
+         System.out.println(e.getCause());
+      } finally {
+         try {
+            if(rs != null)  rs.close();
+         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+         }
+      }
+   }
+
+   public boolean likelistMatch(int filmId, int userId) {
+      Connection conn = null;
+      Statement stmt = null;
+      try {
+         //STEP 2: Register JDBC driver
+         //Class.forName("com.mysql.jdbc.Driver");
+
+         //STEP 3: Open a connection
+         System.out.println("Connecting to database...");
+         conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+         //STEP 4: Execute a query
+         System.out.println("Creating statement...");
+
+         stmt = conn.createStatement();
+         String sql = "SELECT film_user_id, film_id FROM liked_list";
+//         film_user.id AS user_id, films.id AS film_id
+
+         ResultSet rs = stmt.executeQuery(sql);
+
+         //STEP 5: Extract data from result set
+         while (rs.next()) {
+            int fi = rs.getInt("film_id");
+            int fui = rs.getInt("film_user_id");
+            //-------------------------------------------------------------------------------
+            if (filmId == fi && userId == fui) {
+               return true;
+            }
+         }
+         //STEP 6: Clean-up environment
+         rs.close();
+         stmt.close();
+         conn.close();
+      } catch (SQLException se) {
+         //Handle errors for JDBC
+         se.printStackTrace();
+      } catch (Exception e) {
+         //Handle errors for Class.forName
+         e.printStackTrace();
+      } finally {
+         //finally block used to close resources
+         try {
+            if (stmt != null)
+               stmt.close();
+         } catch (SQLException se2) {
+         }// nothing we can do
+         try {
+            if (conn != null)
+               conn.close();
+         } catch (SQLException se) {
+            se.printStackTrace();
+         }//end finally try
+      }//end try
+      return false;
+   }
+
+   public Film getAFilmById(String id) {
+      Film film = null;
+      Connection conn = null;
+      Statement stmt = null;
+      try {
+         conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+         stmt = conn.createStatement();
+         String sql = "SELECT * FROM films";
+
+         ResultSet rs = stmt.executeQuery(sql);
+
+         while (rs.next()) {
+            int fi = rs.getInt("id");
+            String fn = rs.getString("film_name");
+            String fg = rs.getString("film_genre");
+            String sfg = rs.getString("secondary_film_genre");
+            String fyor = rs.getString("film_year_of_release");
+            String fd = rs.getString("film_description");
+            String fimg = rs.getString("film_image");
+            //--------------------------------------------------------------------------------
+            if (String.valueOf(fi).equals(id)) {
+               film = new Film(fi, fn, fd, fyor, fimg);
+            }
+         }
+         rs.close();
+         stmt.close();
+         conn.close();
+      } catch (SQLException se) {
+         //Handle errors for JDBC
+         se.printStackTrace();
+      } catch (Exception e) {
+         //Handle errors for Class.forName
+         e.printStackTrace();
+      } finally {
+         //finally block used to close resources
+         try {
+            if (stmt != null)
+               stmt.close();
+         } catch (SQLException se2) {
+         }// nothing we can do
+         try {
+            if (conn != null)
+               conn.close();
+         } catch (SQLException se) {
+            se.printStackTrace();
+         }//end finally try
+      }//end try
+      return film;
+   }
 }
