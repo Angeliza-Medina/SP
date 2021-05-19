@@ -109,7 +109,11 @@ public class GUI {
       JButton likedBtn = createNavBtn("src\\img\\navIcons\\thumbs-up-solid.png");
 
       // Add eventListeners to the buttons
-      homeBtn.addActionListener(e -> insideAppContentLayout.show(mainContainer,"HOME_CARD"));
+      homeBtn.addActionListener(e -> {
+         HomeCard.searchField.setText("Search...");
+         HomeCard.homeCardLayout.show(HomeCard.homeMainContainer, "MOVIE_RECOMMENDATIONS");
+         insideAppContentLayout.show(mainContainer,"HOME_CARD");
+      });
 
       mainContainer.add(UserCard.createUserCard(), "USER_CARD");
       userBtn.addActionListener(e -> {

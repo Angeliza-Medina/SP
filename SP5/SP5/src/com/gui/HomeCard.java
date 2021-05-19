@@ -21,6 +21,8 @@ public class HomeCard {
    static JPanel movieMatchCard;
    static JPanel movieNoMatchCard;
 
+   static JTextField searchField;
+
    static Film movieSearchResult = null;
 
    static FontManager fontManager = new FontManager();
@@ -48,7 +50,7 @@ public class HomeCard {
    private static JPanel createSearchField(){
       JPanel searchFieldContainer = new JPanel();
 
-      JTextField searchField = new JTextField("Search...");
+      searchField = new JTextField("Search...");
       searchField.setHorizontalAlignment(JTextField.CENTER);
       searchField.setPreferredSize(new Dimension(350, 35));
 

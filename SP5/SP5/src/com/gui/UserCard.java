@@ -46,6 +46,8 @@ public class UserCard {
 
       signOut.addActionListener(e -> {
          Main.currentUser = null;
+         HomeCard.searchField.setText("Search...");
+         HomeCard.homeCardLayout.show(HomeCard.homeMainContainer, "MOVIE_RECOMMENDATIONS");
          GUI.insideAppContentLayout.show(GUI.mainContainer,"HOME_CARD");
          GUI.outSideAppContentLayout.show(GUI.outsideAppCard, "SIGN_IN_CARD");
 
